@@ -1,0 +1,62 @@
+git checkout v3.0
+git checkout -b quote
+
+cp ../quote-3.0-patch.txt ./
+
+patch -p1 <quote-3.0-patch.txt
+Update the changelog for each file that is modified
+	   modified:   src/cmp.c
+	   modified:   src/diff.c
+	   modified:   src/diff3.c
+	   modified:   src/dir.c
+	   modified:   src/sdiff.c
+	   modified:   src/util.c
+
+emacs src/<file>
+C-x 4 a
+
+git status
+git clean -f (remove quote-3.0-patch.txt that I just copied in)
+
+git add . (add all modified files)
+git commit -F ChangeLog
+
+To generate the patch I run the command
+
+git format-patch -1 --stdout >formatted-patch.txt
+
+Now using my partner's patch:
+
+git checkout v3.0
+git checkout -b patch_partner
+
+Copy his patch.txt
+
+git am patch.txt
+
+Repeating the build
+./bootstrap
+./configure
+make
+make check
+
+Then to make sure everything worked.
+
+./src/diff . -
+./src/diff --help
+
+THere does not appear to be any non ascii characters. 
+
+Finally to verify the changelog
+
+make distdir
+
+After it creates the new folder, I check the Changelog in that folder
+and I see my just inputting changelog.
+
+After this, to test gitk
+I cloned the emacs folder using
+git clone ~eggert/src/gnu/emacs
+cd emacs
+
+Now I just examine the window and find the newest merge point.

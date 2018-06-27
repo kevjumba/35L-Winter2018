@@ -1,0 +1,83 @@
+For this lab, my partner was Jeffrey Zhu. We each had a Beagle Bone Green Wireless.
+First we followed the instructions posted in the Piazza forum to set up the Beagle
+Bone. 
+
+As both of us did have Macintosh computers we had to visit a newer version of the 
+HoRnDIS package. After I downloaded this version which I also found on Piazza,
+I ran the command:
+(sudo rm -rf /System/Library/Extensions/HoRNDIS.kext)
+This fixed the problem of not having the correct drivers installed for the BeagleBone.
+
+After setting up the Beagle Bone, my partner and I set up server and client side
+ssh on both beagle bones. 
+First I ran:
+$ dpkg --get-selections | grep openssh
+
+We realized openssh-server, gedit, and xterm was not installed so we ran
+sudo apt-get install openssh-server
+sudo apt-get install gedit
+sudo apt-get install xterm
+
+Then I ran:
+$ ssh-keygen
+This function generated the public and private keys for my beaglebone. 
+All of the directories were left to the default by not entering anything
+and pressing enter.
+
+Then I created a useraccount for Jeffrey on my BeagleBone
+
+$ sudo useradd –d /home/Jeffrey –m JeffreyZhu
+$ sudo passwd JeffreyZhu
+$ Passphrase? jeff
+
+Afterwards I created the .ssh folder, so that Jeffrey can input his own keys.
+I also used chown and chmod to give Jeffrey read and write permissions to the
+folder and also change to owner of the folder.
+
+$ cd /home/JeffreyZhu
+$ sudo mkdir .ssh
+$ sudo chown –R JeffreyZhu .ssh
+$ sudo chmod 700 .ssh
+
+After setting this up, we each grabbed our own ip addresses using 
+$ipconfig
+
+Mine was 10.97.85.11 and Jeffrey's was 10.97.85.6.
+
+After acquiring ip-addresses, we set up our client sides:
+$ ssh-agent
+$ ssh-copy-id –i kevin@10.97.85.6
+$ ssh-add
+
+I copied my ssh keys to the remote server and started an ssh-agent.
+Then I added the ssh key to the authentication agent.
+Since Jeffrey set up my account on his Beagle Bone, we both made sure we were connected
+to the same wifi network.
+
+I ran:
+
+$ ssh kevin@10.97.85.6
+And inputted the passphrase he set for me: kev.
+
+After seemingly logging in, I ran a simple function to make sure his beagle was receiving my commands.
+$ mkdir kevin
+
+To exit out I ran
+$ exit
+
+To ssh using X-Forwarding, I first logged out of the beaglebone and went to my XQuartz terminal
+which is located on my Mac in the Utility folder. In the top navigation bar, I select Application
+-> Terminal then I run
+
+$sudo ssh -X debian@192.168.7.2
+
+Then I ssh'd into Jeffrey's BeagleBone using:
+
+ssh -X kevin@10.97.85.6
+
+Then I ran the following programs to make sure they were working correctly.
+gedit
+xterm
+firefox
+
+Although each program worked a bit slow, the overall functionality all worked fine.

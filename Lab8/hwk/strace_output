@@ -1,0 +1,61 @@
+execve("./randmain", ["./randmain", "20"], [/* 38 vars */]) = 0
+brk(NULL)                               = 0x24c4000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fe8d2150000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/u/cs/ugrad/zhangk/35L/Lab8/hwk/tls/x86_64/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/u/cs/ugrad/zhangk/35L/Lab8/hwk/tls/x86_64", 0x7ffc81a2ddc0) = -1 ENOENT (No such file or directory)
+open("/u/cs/ugrad/zhangk/35L/Lab8/hwk/tls/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/u/cs/ugrad/zhangk/35L/Lab8/hwk/tls", 0x7ffc81a2ddc0) = -1 ENOENT (No such file or directory)
+open("/u/cs/ugrad/zhangk/35L/Lab8/hwk/x86_64/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/u/cs/ugrad/zhangk/35L/Lab8/hwk/x86_64", 0x7ffc81a2ddc0) = -1 ENOENT (No such file or directory)
+open("/u/cs/ugrad/zhangk/35L/Lab8/hwk/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/u/cs/ugrad/zhangk/35L/Lab8/hwk", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=153128, ...}) = 0
+mmap(NULL, 153128, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fe8d212a000
+close(3)                                = 0
+open("/lib64/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`\16\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=19776, ...}) = 0
+mmap(NULL, 2109744, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fe8d1d2c000
+mprotect(0x7fe8d1d2e000, 2097152, PROT_NONE) = 0
+mmap(0x7fe8d1f2e000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7fe8d1f2e000
+close(3)                                = 0
+open("/u/cs/ugrad/zhangk/35L/Lab8/hwk/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+open("/lib64/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\35\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2127336, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fe8d2129000
+mmap(NULL, 3940800, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fe8d1969000
+mprotect(0x7fe8d1b21000, 2097152, PROT_NONE) = 0
+mmap(0x7fe8d1d21000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b8000) = 0x7fe8d1d21000
+mmap(0x7fe8d1d27000, 16832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fe8d1d27000
+close(3)                                = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fe8d2127000
+arch_prctl(ARCH_SET_FS, 0x7fe8d2127740) = 0
+mprotect(0x7fe8d1d21000, 16384, PROT_READ) = 0
+mprotect(0x7fe8d1f2e000, 4096, PROT_READ) = 0
+mprotect(0x601000, 4096, PROT_READ)     = 0
+mprotect(0x7fe8d2151000, 4096, PROT_READ) = 0
+munmap(0x7fe8d212a000, 153128)          = 0
+open("/u/cs/ugrad/zhangk/35L/Lab8/hwk/randlibhw.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\240\5\0\0\0\0\0\0"..., 832) = 832
+brk(NULL)                               = 0x24c4000
+brk(0x24e5000)                          = 0x24e5000
+brk(NULL)                               = 0x24e5000
+fstat(3, {st_mode=S_IFREG|0755, st_size=37840, ...}) = 0
+mmap(NULL, 2101296, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fe8d1767000
+mprotect(0x7fe8d1768000, 2093056, PROT_NONE) = 0
+mmap(0x7fe8d1967000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0x7fe8d1967000
+close(3)                                = 0
+mprotect(0x7fe8d1967000, 4096, PROT_READ) = 0
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 2), ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fe8d214f000
+write(1, "b4751fe104376d04\n", 17)      = 17
+write(1, "995ae79e4ae70167\n", 17)      = 17
+write(1, "43ed1005\n", 9)               = 9
+close(1)                                = 0
+munmap(0x7fe8d214f000, 4096)            = 0
+munmap(0x7fe8d1767000, 2101296)         = 0
+exit_group(0)                           = ?
++++ exited with 0 +++

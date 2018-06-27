@@ -1,0 +1,65 @@
+#!/bin/sh                                                                       
+
+dir=$1
+# $1 stores user argument                                                       
+REG=`ls $dir | sort`
+DOT=`ls -a $dir| grep "^\." | sort`
+#two separated lists of sorted files
+#REG has all the normal files
+#DOT has all of the files starting with .
+
+declare -a ARR
+
+let index=0
+for FILE in $DOT
+    do
+    if [ -L "$dir/$FILE" ] || [ -d "$dir/$FILE" ]
+    #file is a symbolic link or directory                                                                        
+    then
+	continue
+    elif [ -f "$dir/$FILE" ] && [ -r "$dir/$FILE" ]
+    #file exists and we have read right priviledges
+                                                                                
+    then
+        ARR[$index]="$dir/$FILE"
+        index=$((index + 1))
+        echo "$FILE is input into array"
+    else
+        echo "$FILE has no permissions"
+    fi
+done
+
+for FILE in $REG
+    do
+    if [ -L "$dir/$FILE" ] || [ -d "$dir/$FILE" ]
+    #file is a symbolic link or directory                                                                                          
+    then
+        continue
+    elif [ -f "$dir/$FILE" ] && [ -r "$dir/$FILE" ]
+    #file exists and we have read right priviledges                                                                                
+
+    then
+        ARR[$index]="$dir/$FILE"
+        index=$((index + 1))
+        echo "$FILE is input into array"
+    else
+        echo "$FILE has no permissions"
+    fi
+done
+
+for (( i=0; i<$index; i++))
+do
+    for(( j=$i+1;j < $index; j++ ))
+    do
+	if cmp -s "${ARR[$i]}" "${ARR[$j]}"
+	then
+	    #echo "${ARR[$i]} and ${ARR[$j]} match
+	    #since the array is already sorted lexographically
+	    #and .'s are at the front we just make link from j to i
+	    ln -f "${ARR[$i]}" "${ARR[$j]}"
+	else
+	   continue
+	fi
+	
+    done
+done
